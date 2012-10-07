@@ -23,7 +23,7 @@ this.podo = new function() {
 //~ </component>
 
 
-	var $, ree = $ = this;
+	var ree = this;
 
 
 //~ <component>
@@ -115,10 +115,11 @@ function ReeType() {
 
 	}
 
-	Type.variants.forEach(function(c, i) {
-		this[c] = i;
-		this[i] = c;
-	}, getType);
+
+	for(var i = 0, l = Type.variants.length; i < l; i++) {
+		getType[Type.variants[i]] = i;
+		getType[i] = Type.variants[i];
+	}
 
 	this.type = function(something) {
 		return new Type(getType(something), something);
@@ -610,8 +611,6 @@ function ReeNumber() {
 
 function ReeString() {
 
-	var parent = this;
-
 	this.str = new function() {
 
 		// is mail
@@ -659,7 +658,7 @@ function ReeString() {
 			if(str.length === 1) {
 				str += str;
 			}
-			return parent.num.limit(parent.num.toInt(str, 16), 0, 255);
+			return ree.num.limit(ree.num.toInt(str, 16), 0, 255);
 		}
 
 		function getColors(str) {
@@ -672,7 +671,7 @@ function ReeString() {
 					M = str.match(/\w{2}/g);
 				}
 				if(M.length === 3) {
-					M = parent.arr.map(M, tenBasedColor);
+					M = ree.arr.map(M, tenBasedColor);
 				}
 				else {
 					throw Error('Incorrect input string!');
@@ -681,8 +680,8 @@ function ReeString() {
 			else {
 				M = str.match(/\d{1,3}/g);
 				if(M) {
-					M = parent.arr.map(M, function(c) {
-						return parent.num.limit(parent.num.toInt(c), 0, 255);
+					M = ree.arr.map(M, function(c) {
+						return ree.num.limit(ree.num.toInt(c), 0, 255);
 					});
 
 				}
@@ -710,7 +709,7 @@ function ReeString() {
 			var colors = this.getColors(str);
 			console.log(colors);
 			if(colors.length === 3) {
-				return '#' + parent.arr.map(colors, function(c) {
+				return '#' + ree.arr.map(colors, function(c) {
 					var color = c.toString(16);
 					return (color.length === 1) ? '0' + color : color;
 				}).join('');
@@ -723,8 +722,8 @@ function ReeString() {
 		// trim
 
 		function trim(str, chars) {
-			str = parent.str.ltrim(str, chars);
-			str = parent.str.rtrim(str, chars);
+			str = ree.str.ltrim(str, chars);
+			str = ree.str.rtrim(str, chars);
 			return str;
 		};
 
