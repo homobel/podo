@@ -5,6 +5,6 @@
 //~ </component>
 
 
-$.eventsController = function(name) {
+$.getEventsController = function(name) {
 	return new EventsController(name);
 };

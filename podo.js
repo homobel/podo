@@ -1038,7 +1038,11 @@ DataInjectionObject.prototype = new DataInjectionObjectProto();
 //~ </component>
 
 
-$._defaultDataInstance = new DataInjectionObject($.hash);
+$.getDataInjectionObject = function(hash) {
+	return new DataInjectionObject(hash);
+};
+
+$._defaultDataInstance = $.getDataInjectionObject($.hash);
 
 $.data = function(obj, name, val) {
 	return $._defaultDataInstance.data(obj, name, val);
@@ -1100,7 +1104,7 @@ EventsController.prototype = new EventsControllerProto();
 //~ </component>
 
 
-$.eventsController = function(name) {
+$.getEventsController = function(name) {
 	return new EventsController(name);
 };
 
@@ -1154,7 +1158,7 @@ function ObserverProto() {
 
 function Observer(obj) {
 	this._instance = obj;
-	this._e = $.eventsController();
+	this._e = $.getEventsController();
 }
 
 Observer.prototype = new ObserverProto();
