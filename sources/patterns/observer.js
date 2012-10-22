@@ -37,7 +37,7 @@ function ObserverProto() {
 
 function Observer(obj) {
 	this._instance = obj;
-	this._e = $.getEventsController();
+	this._e = $.eventsController();
 }
 
 Observer.prototype = new ObserverProto();

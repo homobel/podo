@@ -5,7 +5,9 @@
 //~ </component>
 
 
-this.podo = new function() {
+if(this.podo === undefined) {
+
+	this.podo = new function() {
 
 
 //~ <component>
@@ -18,7 +20,7 @@ this.podo = new function() {
 
 
 //~ <component>
-//~	Name: Ree Lib init file
+//~	Name: Ree init file
 //~	Info: Working with embedded types
 //~ </component>
 
@@ -128,8 +130,8 @@ function ReeType() {
 
 
 //~ <component>
-//~	Name: Yobject
-//~	Info: Provide object helpers
+//~	Name: Object Helper
+//~	Info: Provides object helpers
 //~ </component>
 
 function ReeObject() {
@@ -279,8 +281,8 @@ function ReeObject() {
 
 
 //~ <component>
-//~	Name: Yarray
-//~	Info: Provide array helpers
+//~	Name: Array Helper
+//~	Info: Provides array helpers
 //~ </component>
 
 
@@ -555,8 +557,8 @@ function ReeArray() {
 
 
 //~ <component>
-//~	Name: Ynumber
-//~	Info: Provide number helpers
+//~	Name: Number Helper
+//~	Info: Provides number helpers
 //~ </component>
 
 function ReeNumber() {
@@ -605,8 +607,8 @@ function ReeNumber() {
 
 
 //~ <component>
-//~	Name: Ystring
-//~	Info: Provide string helpers
+//~	Name: String Helper
+//~	Info: Provides string helpers
 //~ </component>
 
 function ReeString() {
@@ -778,8 +780,8 @@ function ReeString() {
 
 
 //~ <component>
-//~	Name: Yfunction
-//~	Info: Provide function helpers
+//~	Name: Function Helper
+//~	Info: Provides function helpers
 //~ </component>
 
 
@@ -1038,11 +1040,11 @@ DataInjectionObject.prototype = new DataInjectionObjectProto();
 //~ </component>
 
 
-$.getDataInjectionObject = function(hash) {
+$.dataInjectionObject = function(hash) {
 	return new DataInjectionObject(hash);
 };
 
-$._defaultDataInstance = $.getDataInjectionObject($.hash);
+$._defaultDataInstance = $.dataInjectionObject($.hash);
 
 $.data = function(obj, name, val) {
 	return $._defaultDataInstance.data(obj, name, val);
@@ -1104,7 +1106,7 @@ EventsController.prototype = new EventsControllerProto();
 //~ </component>
 
 
-$.getEventsController = function(name) {
+$.eventsController = function(name) {
 	return new EventsController(name);
 };
 
@@ -1158,7 +1160,7 @@ function ObserverProto() {
 
 function Observer(obj) {
 	this._instance = obj;
-	this._e = $.getEventsController();
+	this._e = $.eventsController();
 }
 
 Observer.prototype = new ObserverProto();
@@ -1722,4 +1724,9 @@ $.xjsonsProcessor = function(schema, obj) {
 
 
 
-};
+	};
+
+}
+else {
+	throw Error('podo init error -  property already present in ' + this.toString());
+}

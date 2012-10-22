@@ -1,0 +1,7 @@
+
+//~	Podo (C) 2012 Archy Sharp
+//~	https://github.com/homobel/podo
+//~	Dual licensed under the MIT and GPL v2 licenses:
+//~	- http://www.opensource.org/licenses/mit-license.php
+//~	- http://www.gnu.org/licenses/gpl-2.0.html
+

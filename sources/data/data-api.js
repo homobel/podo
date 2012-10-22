@@ -5,11 +5,11 @@
 //~ </component>
 
 
-$.getDataInjectionObject = function(hash) {
+$.dataInjectionObject = function(hash) {
 	return new DataInjectionObject(hash);
 };
 
-$._defaultDataInstance = $.getDataInjectionObject($.hash);
+$._defaultDataInstance = $.dataInjectionObject($.hash);
 
 $.data = function(obj, name, val) {
 	return $._defaultDataInstance.data(obj, name, val);
