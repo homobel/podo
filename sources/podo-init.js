@@ -5,7 +5,7 @@
 //~ </component>
 
 
-	var $, podo = $ = this;
+	var $ = this;
 
 //~ require: ../../ree/sources/ree-init.js
 
@@ -26,4 +26,3 @@
 
 //~ require: patterns
 
-//~ require: xjsons/xjsons.js
